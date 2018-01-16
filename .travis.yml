@@ -22,7 +22,8 @@ before_script:
 
 
 script:
-- pytest --cov tests
+# - pytest --cov tests
+- python manage.py test
 
 after_success:
 - coverage report
