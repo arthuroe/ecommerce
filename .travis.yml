@@ -1,0 +1,29 @@
+language:
+- python
+
+cache:
+- pip
+
+python:
+- "3.5"
+
+install:
+- pip install coverage
+- pip install coveralls
+- pip install pytest-cov
+- pip install -r requirements.txt
+
+services:
+- postgresql
+
+before_script:
+- psql -c "CREATE ROLE arthuroe PASSWORD 'dbadmin' CREATEDB CREATEROLE INHERIT LOGIN;" -U postgres
+- psql -c "create database shoppinglist;" -U postgres
+
+
+script:
+- pytest --cov tests
+
+after_success:
+- coverage report
+- coveralls
