@@ -27,3 +27,8 @@ script:
 after_success:
 - coverage report
 - coveralls
+
+ notifications:
+    slack: travis encrypt "andela:TPJzrDlMCaZv69q7hWNKhdvn" --add notifications.slack
+
+travis encrypt "andela:TPJzrDlMCaZv69q7hWNKhdvn" --add notifications.slack
